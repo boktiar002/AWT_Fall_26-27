@@ -1,0 +1,294 @@
+{
+  "info": {
+    "name": "BuildTrack API - Lab Task 2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Projects",
+      "item": [
+        {
+          "name": "Create Project",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Pipra Tower\",\n  \"location\": \"Mirpur DOHS, Dhaka\",\n  \"totalUnits\": 24,\n  \"startDate\": \"2026-01-15\",\n  \"expectedHandoverDate\": \"2028-06-30\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get All Projects",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Project by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "INVALID - empty name (expect 400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\",\n  \"location\": \"Mirpur DOHS, Dhaka\",\n  \"totalUnits\": 24,\n  \"startDate\": \"2026-01-15\",\n  \"expectedHandoverDate\": \"2028-06-30\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Progress Updates",
+      "item": [
+        {
+          "name": "Create Progress Update",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/progress-updates",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "progress-updates"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"5th floor slab casting done\",\n  \"description\": \"Roof slab of 5th floor cast and curing started.\",\n  \"completionPercent\": 35,\n  \"updateDate\": \"2026-10-20\",\n  \"projectId\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get All Progress Updates",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/progress-updates",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "progress-updates"
+              ]
+            }
+          }
+        },
+        {
+          "name": "INVALID - empty title (expect 400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/progress-updates",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "progress-updates"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"\",\n  \"description\": \"Roof slab of 5th floor cast and curing started.\",\n  \"completionPercent\": 35,\n  \"updateDate\": \"2026-10-20\",\n  \"projectId\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Installments",
+      "item": [
+        {
+          "name": "Create Installment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/installments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "installments"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerName\": \"Rahim Uddin\",\n  \"flatNumber\": \"A-5\",\n  \"installmentNo\": 3,\n  \"amount\": 250000,\n  \"dueDate\": \"2026-11-10\",\n  \"status\": \"PENDING\",\n  \"projectId\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get All Installments",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/installments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "installments"
+              ]
+            }
+          }
+        },
+        {
+          "name": "INVALID - empty buyerName (expect 400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/installments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "installments"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"buyerName\": \"\",\n  \"flatNumber\": \"A-5\",\n  \"installmentNo\": 3,\n  \"amount\": 250000,\n  \"dueDate\": \"2026-11-10\",\n  \"status\": \"PENDING\",\n  \"projectId\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
